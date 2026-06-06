@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body{
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .main{
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+           background-color:yellowgreen;
+        }
+        .main .box1{
+            top: 15vh;
+            left: 28vw;
+            position: absolute;
+            width: 600px;
+            height: 420px;
+            border:3px solid whitesmoke;
+            background-color: whitesmoke;
+            border-radius: 70px;
+            box-shadow: 4px 4px 4px whitesmoke;
+        }
+        .main h1{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            position: absolute;
+            top: 3vh;
+            left: 8vw;
+            font-size: 200%;
+        }
+        .main #text{
+            position: absolute;
+            top: 20vh;
+            left: 7vw;
+            width: 400px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 40px;
+            padding: 10px;
+        }
+        .main #b1{
+            position: absolute;
+            top: 35vh;
+            left: 12vw;
+            width: 260px;
+            height: 60px;
+            border: 2px solid black;
+            border-radius: 40px;
+            cursor: pointer;
+            color: black;
+            background-color: green;
+        }
+        .main #b1:hover{
+            position: absolute;
+            top: 35vh;
+            left: 12vw;
+            width: 260px;
+            height: 60px;
+            border: 2px solid black;
+            border-radius: 40px;
+            cursor: pointer;
+            color: whitesmoke;
+            background-color: green;
+        }
+        .main #qrcode{
+            display: block;
+             position: absolute;
+            top:50vh;
+            left: 18vw;
+        }
+    </style>
+<body>
+    <div class="main">
+      <div class="box1">
+            <h1>QR CODE GENERATOR</h1>
+            <input type="text" id="text" placeholder="Enter Text or URL.."><br>
+            <button onclick="generateQrCode()" id="b1">Genarate QR Code</button>
+             <div id="qrcode"></div>
+      </div>
+
+     
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        var $=function(id){
+            return document.getElementById(id);
+        }
+
+        function generateQrCode(){
+            let text=$("text").value;
+           let qrContainer = $("qrcode");
+           qrContainer.innerHTML = "";
+
+            if(text.trim()!==""){
+                new QRCode(qrContainer,{
+                    text:text, 
+                    width:100,
+                    height:100
+                });
+            }
+            else{
+                alert("Kindly Enter URL..")
+            }
+        }
+    </script>
+</body>
+</html>
